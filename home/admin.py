@@ -1,9 +1,12 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import FooterItem
-from .models import DishCategory, Dish
+from .models import DishCategory, Dish, Chef, Events, Gallery
 
 admin.site.register(FooterItem)
+admin.site.register(Chef)
+admin.site.register(Events)
+admin.site.register(Gallery)
 
 @admin.register(DishCategory)
 class DishCategoryAdmin(admin.ModelAdmin):

@@ -53,3 +53,29 @@ class FooterItem(models.Model):
     facebook = models.URLField(max_length=255, blank=True)
     instagram = models.URLField(max_length=255, blank=True)
     youtube = models.URLField(max_length=255, blank=True)
+
+class Chef(models.Model):
+    name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
+    appointment = models.CharField(max_length=50)
+    description = models.TextField(max_length=1000, blank=True)
+    position = models.PositiveSmallIntegerField(unique=True)
+    is_visible = models.BooleanField(default=True)
+    photo = models.ImageField(upload_to='chefs_photos', blank=True)
+
+    def __str__(self):
+        return f'{self.name} {self.surname}'
+
+class Events(models.Model):
+    name = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    description = models.TextField()
+    photo = models.ImageField(upload_to='events')
+    is_visible = models.BooleanField(default=True)
+    position = models.PositiveSmallIntegerField(default=1)
+
+class Gallery(models.Model):
+    photo = models.ImageField(upload_to='gallery')
+    is_visible = models.BooleanField(default=True)
+    position = models.PositiveSmallIntegerField(default=1)
+    name = models.CharField(max_length=50)
