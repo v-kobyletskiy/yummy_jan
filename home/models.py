@@ -79,3 +79,21 @@ class Gallery(models.Model):
     is_visible = models.BooleanField(default=True)
     position = models.PositiveSmallIntegerField(default=1)
     name = models.CharField(max_length=50)
+
+
+class Reservation(models.Model):
+    name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
+    email = models.EmailField()
+    date = models.DateField()
+    time = models.TimeField()
+    message = models.TextField(blank=True)
+    number_people = models.PositiveSmallIntegerField()
+
+    is_conformed = models.BooleanField(default=False)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('-created_at',)
