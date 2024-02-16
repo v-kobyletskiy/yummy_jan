@@ -29,7 +29,7 @@
                 <div class="col-lg-4 col-md-6">
 {#                  <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">#}
                     {{ reservation_form.phone }}
-                    <div class="validate"></div>
+                    <div class="validate">{{ reservation_form.phone.errors }}</div>
                 </div>
                 <div class="col-lg-4 col-md-6">
 {#                  <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">#}

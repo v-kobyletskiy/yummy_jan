@@ -2,6 +2,11 @@ from django import forms
 from .models import Reservation
 
 class ReservationForm(forms.ModelForm):
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        return f'*{name}*'
+
     class Meta:
         # к какой модели привязиваюсь
         model = Reservation

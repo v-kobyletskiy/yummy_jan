@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import RegexValidator
 from ckeditor.fields import RichTextField
 
 
@@ -83,7 +84,12 @@ class Gallery(models.Model):
 
 class Reservation(models.Model):
     name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
+
+    phone_regex = RegexValidator(
+        regex=r'^\+?380\d{9}$',
+        message="Phone number must be format '+380xxxxxxxxx'. Up to 15 digits"
+    )
+    phone = models.CharField(max_length=255, validators=[phone_regex])
     email = models.EmailField()
     date = models.DateField()
     time = models.TimeField()
